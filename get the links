@@ -1,0 +1,10 @@
+from bs4 import BeautifulSoup
+import urllib.request
+
+url = input("please input the address：");
+with urllib.request.urlopen(url) as response:
+    html = response.read()
+soup = BeautifulSoup(html, 'html.parser')
+
+for link in soup.find_all('a'):
+    print(link.get('href'))
